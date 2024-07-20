@@ -2,6 +2,14 @@
 
 Here is a set of things that I use when reinstalling Windows on my main machine. It includes a script that removes all bloatware, sets up some privacy settings, and applies other tweaks. You can customize what the script does by editing `autounattend.xml`. This file was copied from [memstechtips](https://github.com/memstechtips/UnattendedWinstall) and edited to fit my needs. Feel free to modify it.
 
+## 💻 Autounattend
+
+To use this file, all you need to do is have a bootable USB with a copy of Windows 11 (grab it from Microsoft). Then drop the file onto the USB and that's it! When you boot up your USB, the installation will be slightly different because it disables some things like forcing you to sign in and allows you to use a fully local account. It's common that some terminal screens flash once in a while because it's running some scripts pre-install and post-install (to remove Microsoft bloatware and other things).
+
+Take a look at the file itself and decide if you need to remove some of the things that the file does. I've deleted everything that I don't need, but it might not fit your needs. If this is the case, just erase the line where it should remove the app, and the script won't remove it.
+
+If this is rather confusing, take a look at the [YouTube video](https://www.youtube.com/watch?v=JUTdRZNqODY) where I got the file from, which includes a tutorial.
+
 ## 🎛️ Afterburner and Rivatuner Settings
 
 This folder contains the configuration files for Rivatuner to look like this:
