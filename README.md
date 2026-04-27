@@ -1,25 +1,36 @@
 # 🛠️ Win11 Reinstalling Tools
 
-Here is a set of things that I use when reinstalling Windows on my main machine. It includes a script that removes all bloatware, sets up some privacy settings, and applies other tweaks. You can customize what the script does by editing `autounattend.xml`. This file was copied from [memstechtips](https://github.com/memstechtips/UnattendedWinstall) and edited to fit my needs. Feel free to modify it.
+Scripts y configs que uso al reinstalar Windows 11: autounattend para debloat/privacidad y setup de MSI Afterburner + RTSS.
 
-## 💻 Autounattend
+## Autounattend
 
-To use this file, all you need to do is have a bootable USB with a copy of Windows 11 (grab it from Microsoft). Then drop the file onto the USB and that's it! When you boot up your USB, the installation will be slightly different because it disables some things like forcing you to sign in and allows you to use a fully local account. It's common that some terminal screens flash once in a while because it's running some scripts pre-install and post-install (to remove Microsoft bloatware and other things).
+`autounattend.xml` automatiza la instalación: skip login con cuenta Microsoft (cuenta local OK), remueve bloatware y aplica tweaks. Basado en [memstechtips/UnattendedWinstall](https://github.com/memstechtips/UnattendedWinstall).
 
-Take a look at the file itself and decide if you need to remove some of the things that the file does. I've deleted everything that I don't need, but it might not fit your needs. If this is the case, just erase the line where it should remove the app, and the script won't remove it.
+**Uso:** copiar el `.xml` a la USB booteable de Windows 11. Listo.
 
-If this is rather confusing, take a look at the [YouTube video](https://www.youtube.com/watch?v=JUTdRZNqODY) where I got the file from, which includes a tutorial.
+Editá el archivo si querés conservar apps que el script remueve (borrá la línea correspondiente). Tutorial: [video](https://www.youtube.com/watch?v=JUTdRZNqODY).
 
-## 🎛️ Afterburner and Rivatuner Settings
+## MSI Afterburner + RTSS
 
-This folder contains the configuration files for Rivatuner to look like this:
+OSD personalizado para monitoring in-game (GPU/CPU load, temps, fans, FPS, frametime, etc).
 
-![Screenshot of Rivatuner](https://i.imgur.com/i4tzMM3.png)
+![Screenshot](https://i.imgur.com/i4tzMM3.png)
 
-Afterburner is a software that allows you to modify overclocks (OCs) for the GPU and tweak the voltage curve. In this case, the OC settings have not been touched. It only includes what's necessary for Rivatuner, which is a software for monitoring in-game performance of the PC in general. It displays stats such as GPU load, current temperature, fan percentages, etc.
+### Setup automático
 
-The default interface wasn't enough for me, so I tweaked it a little. Feel free to edit it with your system's hardware (edit file `MSI Afterburner/Profiles/MSIAfterburner.cfg`):
+Con MSI Afterburner y RTSS ya instalados, correr `Afterburner + Rivatuner settings/setup-monitoring.bat`. Auto-eleva a admin y pregunta:
 
-- **CPU:** Go to line 351 and change "Ryzen 7..." with your CPU. This option also has the color `#25B9CA`. You can change it with `C=<HexCodeForColor>`.
-- **GPU:** Go to line 171 and change "RTX ..." with your GPU.
-- **RAM:** Go to line 371 and change the name of the group. This is purely visual, but I prefer to display how many sticks of RAM and their capacity.
+- **CPU** (ej. `Ryzen 7 5800X`)
+- **GPU** (ej. `RTX 3080 Ti`)
+- **VRAM** en GB
+- **RAM**: menú con presets (`1x16`, `2x16`, `4x8`, `2x32`, etc.) o custom
+
+Parchea el `.cfg`, cierra Afterburner/RTSS, hace backup `*.bak.<timestamp>` y copia todo a `C:\Program Files (x86)\MSI Afterburner\` y `...\RivaTuner Statistics Server\`. Los `VEN_*.cfg` (OCs específicos) no se tocan.
+
+### Edición manual
+
+Editar `MSI Afterburner/Profiles/MSIAfterburner.cfg`:
+
+- **Línea 171** — GPU (color `#3ECA25`)
+- **Línea 351** — CPU (color `#25B9CA`)
+- **Línea 371** — label RAM
